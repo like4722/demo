@@ -1,22 +1,121 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
+
+    <!-- jQuery -->
+    <script type="text/javascript" charset="utf8" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+    <!-- DataTables -->
+    <script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
+
+    {% include 'top.html' %}
+
+    <title>{% block title %}业务支持{% endblock %} - 主页</title>
 </head>
 <body>
-    <h1>信息展示</h1>
-    <table>
-    <tr>
-        <th>用户名</th>
-        <th>密码</th>
-    </tr>
-    {% for line in people_list %}
-    <tr>
-        <td>{{line.username}}</td>
-        <td>{{line.password}}</td>
-    </tr>
-    {% endfor %}
-    </table>
-</body>
-</html>
+
+{% include 'middle.html' %}
+
+{% block content %}
+<div class="content_show">
+	<!-- <input type="submit" name="Button" value="展示数据" onclick="ajax_click()"  /> -->
+ <div class="ibox-content">
+     <table id="deviceEditable"
+            class="table table-striped table-bordered table-hover">
+         <thead>
+               <tr>
+                    <th>最新文件</th>
+                    <th>文件名</th>
+                    <th>描述</th>
+                    <th>上传者</th>
+                    <th>上传日期</th>
+
+               </tr>
+          </thead>
+     </table>
+             <script>
+            var username= {{ username|safe }};
+            var filename= {{ filename|safe }};
+            var create_time = {{ create_time|safe }};
+            var time_different = {{ time_different|safe }};
+            var remark = {{ remark|safe }};
+            var data = [];
+
+
+            for(var i =0;i<filename.length;i++){
+                if(time_different[i]<=80){
+                    var dict = {};
+                    dict.new = 1;
+                    dict.filename=filename[i];
+                    dict.remark = remark[i];
+                    dict.username=username[i];
+                    dict.create_time=create_time[i][0];
+                    data.push(dict);
+                    console.info(dict);
+
+                }
+                else {
+                    var dict = {};
+                    dict.new = 0;
+                    dict.filename=filename[i];
+                    dict.remark = remark[i];
+                    dict.username=username[i];
+                    dict.create_time=create_time[i];
+
+                    data.push(dict);
+                    console.info(dict);
+
+
+                }
+            }
+
+            </script>
+
+</div>
+    <script>
+
+
+$(document).ready(function() {
+$('#deviceEditable').DataTable( {
+        "data": data,
+        "columns": [
+            { "data": 'new' },
+            { "data": 'filename' },
+            {"data": 'remark'},
+            { "data": 'username' },
+
+            { "data": 'create_time' }
+        ],
+   "aoColumnDefs": [
+    {
+        sDefaultContent: '',
+        aTargets: [ '_all' ]
+    },
+    {
+        "aTargets":[0],"mRender":function (data,type,full) {
+            if(data == 1) {
+                return "<img id=" + "newicon" + " " + "src=" + "/static/img/new1.gif" + "/>";
+            }else{
+                return " ";
+            }
+
+        }
+    },
+    {
+        "aTargets":[1],"mRender":function (data,type,full) {
+            return "<a href='../download/filename="+(data)+"'"+">"+(data)+"</a>";
+        }
+    },
+],
+    } );
+} );
+     </script>
+</div>
+
+{% endblock %}
+{% include 'bottom.html' %}
+
+
+
+

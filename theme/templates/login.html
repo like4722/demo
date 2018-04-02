@@ -12,32 +12,30 @@
     <title>Login</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+    <link rel="stylesheet" media="screen" href="/static/css/login.css" />
 
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="{% static 'css/ie10-viewport-bug-workaround.css' %}" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="{% static 'css/signin.css' %}" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="{% static 'js/ie-emulation-modes-warning.js' %}"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
   </head>
 <style>
         html,body{text-align:center;margin:0px auto;}
 </style>
 <body>
-<h1>登录页面</h1>
-<form method = 'post' enctype="multipart/form-data">
-{{userform.as_p}}
-<input type="submit" value = "Login" />
+<header>
+    <div class="header_line" ></div>
+</header>
+<div class="content">
+    <img class="csairlogo1" src="/static/img/csairlogo.png" align="center" alt="上海分公司市场销售部文件管理系统">
+    <img class="csairlogo2" src="/static/img/logo_skyteam.png" align="center" alt="上海分公司市场销售部文件管理系统">
+    <h1>上海分公司市场销售部</br>文件管理系统</h1>
+<div class="content-form">
+<form class= "userpass" method = 'post' enctype="multipart/form-data">
+     {{userform.as_p}}
+<input class="content-form-signup" type="submit" value = "Login" />
+    <div class="content-login-description">没有账户？</div>
+    <div><a class="content-login-link" href="../regist">注册</a></div>
 </form>
+</div>
+</div>
 </body>
 </html>

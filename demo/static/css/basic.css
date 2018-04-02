@@ -1,0 +1,307 @@
+/*
+=======================
+----- CSS.COLOR ----
+=======================
+*/
+
+body{
+  color:#fb5;
+  background-color: #ffffff;
+}
+a:link{
+    color:#445;
+    background-color: #eb6;
+}
+a:visited{
+    color:#345;
+    background-color: #eb6;
+}
+a:hover{
+    color:#667;
+    background-color: #fb5;
+}
+a:active{
+    color:#778;
+    background-color: #ec8;
+}
+header{
+    color:#ec8;
+    background-color: #334;
+    border-color: #667;
+}
+article{
+    color: #223;
+    background-color: #edc;
+    border-color: #667;
+}
+header nav ul{
+    border-color: #99a;
+}
+
+header nav a:link,header nav a:visited{
+    color: #eef;
+    background-color: transparent;
+    border-color: #99a;
+}
+header nav a:hover{
+    color: #445;
+    background-color: #eb6;
+}
+header nav a:active{
+    color: #445;
+    background-color: #eb6;
+}
+form{
+    color: #445;
+    background-color: #eb6;
+
+}
+th{
+    color: #edc;
+    background-color: #455;
+}
+
+tr td{
+    color: #223;
+    background-color: #eb6;
+}
+
+tr.odd td{
+    color: #223;
+    background-color: #ec8;
+}
+tr.highlight td{
+    color: #223;
+    background-color: #cba;
+
+}
+label{
+    color: #ffffff;
+}
+
+#imagegallery a{
+    background-color: transparent;
+}
+.allfile{
+    font-size: 15px;
+    line-height: 30px;
+    color: #ffffff;
+
+}
+
+/*
+=======================
+----- CSS.LAYOUT ----
+=======================
+*/
+section.header,article,nav{
+    display: block;
+}
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    margin: 1em 10%;
+    background-image: url("../img/Portrait.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: repeat-x;
+    max-width: 80em;
+    background-size: 100% 100%;
+    background-size: 1400px 900px;
+}
+header{
+    background-image: url("../img/ServQuick.jpg");
+    background-position:bottom right ;
+    background-repeat: no-repeat;
+    border-width:.1em;
+    border-style: solid;
+    border-bottom-width: 0;
+    background-size: 1100px 200px;
+
+
+}
+header nav{
+    background-position:center;
+    background-repeat: no-repeat;
+    border-width:.0em;
+    border-style: solid;
+    border-bottom-width: 0;
+    border-top-width: 0;
+    padding-left: 10%;
+}
+header nav ul{
+    width:100%;
+    overflow: hidden;
+    border-left-width: .1em;
+    border-left-style:solid ;
+}
+
+header nav li{
+    display: inline;
+}
+header nav li a{
+    display: block;
+    float: left;
+    padding: .5em 2em;
+    border-right: .1em solid;
+}
+article{
+    background-image: url("../img/flight-sky-clouds-fly.jpg");
+    border-width: .1em;
+    border-style: solid;
+    border-top-width: 0;
+    padding: 2em 10%;
+    line-height: 1.8em;
+    background-size: 100% 100%;
+    background-size: 900px 600px;
+}
+#airplane{
+    width:600px;
+    border-style: solid;
+
+}
+article img{
+    border-width: .1em;
+    border-style: solid;
+    outline-width:.1em;
+    outline-style:solid;
+}
+form{
+    width:200px;
+    margin:25px 0;
+    display: inline;
+}
+
+td{
+    padding:.5em .5em;
+
+}
+th{
+    padding:.5em .5em;
+    border: none;
+
+}
+
+table tr td th:first-child{
+    width:15px;
+}
+table tr td th:last-child{
+    width:150px;
+}
+
+label{
+    display: block;
+}
+fieldset{
+    border: 0;
+}
+#barcon{
+    text-align: center;
+}
+#newicon{
+    width:30px;
+    border: 0px solid #eb6;
+    outline-width: 0em;
+
+
+}
+#showfirstline{
+    text-align: left;
+}
+#csairlogo{
+    width:250px;
+}
+#skyteamlogo{
+    width:50px;
+}
+
+/*
+=======================
+----- CSS.TYPOGRAPHY ----
+=======================
+*/
+body{
+    font-size: 76%;
+    font-family: "Helvetica","Arial",sans-serif;
+}
+body *{
+    font-size: 1em;
+
+}
+a{
+    font-weight: bold;
+    text-decoration: none;
+}
+.btn{
+    cursor: pointer;
+}
+span{
+    cursor: pointer;
+}
+header nav{
+    font-family: "Lucida Grande","Helvetica","Arial",sans-serif;
+}
+header nav a{
+    text-decoration: none;
+    font-weight: bold;
+}
+article{
+    line-height: 1.8em;
+}
+article p {
+    margin: 1em 0;
+}
+
+h1{
+    font-family: "Georgia","Times New Roman",sans-serif;
+    font:2.4em normal;
+    color: #ffffff;
+}
+h2{
+    font-family: "Georgia","Times New Roman",sans-serif;
+    font:1.8em normal;
+    margin-top: 1em;
+}
+h3{
+    font-family: "Georgia","Times New Roman",sans-serif;
+    font:1.4em normal;
+    margin-top: 1em;
+
+}
+#imagegallery li{
+    list-style-type: none;
+}
+textarea{
+    font-family: "Helvetica","Arial",sans-serif;
+}
+#intro{
+    font-size: 15px;
+    line-height: 30px;
+    color: #ffffff;
+
+}
+
+.content {
+    width: 50%;
+    margin: 70px auto 0;
+    text-align: left;
+    letter-spacing: 1px;
+
+}
+
+.loading{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+.login_register{
+    text-align:right;
+}
+
+.login_register li{
+     display: inline-block;
+}
+

@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.contrib import admin
 import os
-
+import django.utils.timezone as timezone
 
 # Create your models here.
 class User(models.Model):
@@ -12,14 +12,25 @@ class User(models.Model):
     password = models.CharField(max_length=50)
     email = models.EmailField()
 
-#用户名＋上传文件名，对应views.upload_file
+    # 用户名＋上传文件名，对应views.upload_file
 class UploadInfo(models.Model):
     username = models.CharField(max_length=50)
     filename = models.CharField(max_length=50)
     pathname = models.FileField(upload_to='upload/')
-
+    create_time = models.DateTimeField(default=timezone.now)
+    update_time = models.DateTimeField(default=timezone.now)
+    remark = models.CharField(max_length=50)
     def __unicode__(self):
         return self.username
+
+    class Meta:
+        ordering = ['-create_time']
+
+class CategoryFile(models.Model):
+    category = models.CharField(max_length=32)
+    def __str__(self):
+        return str(self.category)
+
 
 class BlogsPost(models.Model):
     title = models.CharField(max_length = 150)

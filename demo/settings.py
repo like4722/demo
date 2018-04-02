@@ -15,7 +15,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 #BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-BASE_DIR = "/Users/like/Desktop"
+BASE_DIR = "/Users/like/zinnia_demo_env/demo/"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -26,7 +26,7 @@ SECRET_KEY = '1kd+=%5gdde&zn6^99pe=1!-)polf)bmp--szq$sql^o0t792j'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.01','localhost']
+ALLOWED_HOSTS = ['127.0.0.1','localhost']
 SITE_ID = 1
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django.contrib.redirects',
 
     #'django_comments',
     #'mptt',
@@ -46,6 +47,7 @@ INSTALLED_APPS = (
     #'zinnia_bootstrap',
     #'zinnia',
     'theme',
+    'demo',
 )
 
 MIDDLEWARE_CLASSES = [
@@ -57,6 +59,7 @@ MIDDLEWARE_CLASSES = [
 
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
 ]
 
 ROOT_URLCONF = 'demo.urls'
@@ -64,7 +67,7 @@ ROOT_URLCONF = 'demo.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(os.path.dirname(__file__), '../../theme/templates').replace('\\', '/'),],
         'APP_DIRS':False,
         'OPTIONS': {
             'context_processors': [
@@ -128,13 +131,13 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'zh-hans'
 
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 
@@ -144,3 +147,11 @@ ZINNIA_MARKDOWN_EXTENSIONS = ['markdown.extensions.extra', 'markdown.extensions.
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+#HERE = os.path.dirname(os.path.abspath(__file__))
+#HERE = os.path.join(HERE,'../')
+#MEDIA_ROOT =  BASE_DIR+STATIC_URL
+STATIC_PATH = os.path.join(os.path.dirname(__file__), 'static').replace('\\','/')
+#STATICFILES_DIRS=(
+#    os.path.join(HERE,'static/'),
+
+#)

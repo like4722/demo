@@ -26,15 +26,6 @@ import theme
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'',include(theme.urls)),
+    url(r'^theme/', include('theme.urls')),
 
-
-
-    #url(r'^$',archive),
-    #url(r'^weblog/', include('zinnia.urls', namespace='zinnia')),
-    #url(r'^comments/', include('django_comments.urls')),
-
-    #url(r'^login/$', 'logReg.views.login', name='login'),
-    #url(r'^regist/$', 'logReg.views.regist', name='regist'),
-    #url(r'^index/$', 'logReg.views.index', name='index'),
-    #url(r'^logout/$', 'logReg.views.logout', name='logout'),
 ]

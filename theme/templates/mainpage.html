@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% include 'top.html' %}
+
+    <title>{% block title %}业务支持{% endblock %} - 主页</title>
+</head>
+<body>
+
+{% include 'middle.html' %}
+
+{% block content %}
+<div class="content">
+
+    <h1>上海分公司市场销售部业务支持系统简介</h1>
+    <p id="intro">欢迎来到中国南方航空有限公司上海分公司市场销售部文件管理系统。在这里你可以<a href="../uploadfile">上传文件</a>；</br>
+        也可以访问服务器上的<a href="../show">全部文件</a>，对于3天内上传的新文件，会有"new"标识提示您下载阅读；</br>
+        为了方便查找您想要的文件，我们可以通过关键词模糊搜索功能查找到<a href="../showall">相应文件</a>；</br>
+        为了更好的完善该系统，您可以<a href="../contact">联系我们</a>。</br>
+
+    </p>
+
+</div>
+
+{% endblock %}
+{% include 'bottom.html' %}
+
+
+</body>
+</html>

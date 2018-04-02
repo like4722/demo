@@ -1,25 +1,127 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
+    <meta charset="utf-8" />
+    <title>文件搜索</title>
+    <script src="/static/js/global.js"></script>
+    <link rel="stylesheet" media="screen" href="/static/css/basic.css" />
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>所有文件</title>
+
 </head>
 <body>
-	<p>全部文件如下:</p>
-	<!-- <input type="submit" name="Button" value="展示数据" onclick="ajax_click()"  /> -->
-    <table border="10">
-    	<tr>
-        	<th>上传者：</th>
-            <th>文件：</th>
-        </tr>
-        {% for upload in uploadinfo %}
-            <tr >
-                <td>{{upload.username}}</td>
-                <td><a href={{upload.pathname}}>{{upload.filename}}</a></td>
+<header>
+    <img id="csairlogo" src="/static/img/csairlogo.png" align="right" alt="上海分公司市场销售部文件管理系统">
+    <img id="skyteamlogo" src="/static/img/logo_skyteam.png" align="right" alt="上海分公司市场销售部文件管理系统">
+    <nav>
+        <ul>
+            <li><a href="../template">首页</a></li>
+            <li><a href="../uploadfile">上传文件</a></li>
+            <li><a href="../showall">文件搜索</a></li>
+            <li><a href="../newupdate">最新文件</a></li>
+            <li><a href="../contact">关于我们</a></li>
+        </ul>
+    </nav>
+</header>
+<article>
+<input type="text" class="showall_search" type="search" placeholder="请输入搜索内容"/>
+<input type="button" id="action" value="搜索" onclick="search()"/>
+<script>
+    function search()
+    {
+        //input中的内容
+        var searchinput=document.getElementsByClassName('showall_search')[0];
+        //input中的值
+        var searchvalue=searchinput.value;
+        var str_s ="";
+        //str_s +="<table id='showfirstline' width=500 border=0 rules=all><thead><tr><th>"+"文件名"+"</th>"+"<th>"+"</th>"+"<th>"+"上传者"+"</th>"+"<th>"+"上传时间"+"</th></tr></thead></table>";
+        str_s +="<table id='showall' width=80% border=0 rules=all>";
+        str_s +="<tbody>"
+        for(var i =0;i<username.length;i++)
+        {
+           if(filename[i].indexOf(searchvalue)>=0||username[i].indexOf(searchvalue)>=0) {
+               if (time_different[i] <= 80) {
+                   str_s +="<tr>"
+                   str_s += "<td>"+"<img id="+"newicon"+" "+"src="+ "/static/img/new1.gif"+"/>"+ "</td>";
+                   str_s +="<td>"+"<a href='../download/filename="+(filename[i])+"'"+">"+(filename[i])+"</a>" + "</td>";
+                   str_s += "<td>" + (username[i]) + "</td>";
+                   str_s += "<td>" + (create_time[i]) + "</td>";
+                   str_s += "</tr>"
 
-            </tr>
-        {% endfor %}
-    </table>
+               }
+               else {
+                  str_s +="<tr>"
+                   str_s += "<td>"+"</td>";
+                   str_s +="<td>"+"<a href='../download/filename="+(filename[i])+"'"+">"+(filename[i])+"</a>" + "</td>";
+
+                   str_s += "<td>" + (username[i]) + "</td>";
+                   str_s += "<td>" + (create_time[i]) + "</td>";
+                   str_s += "</tr>"
+
+               }
+           }
+        }
+        str_s += "</tbody></table>";
+        //str_s += "<table width=\"68%\" align=\"center\"><tr><td><div id=\"barcon\" name=\"bacon\"></div></td></tr></table>";
+        document.getElementById('showall').innerHTML=str_s;
+        goPage(1);
+    }
+
+</script>
+
+<p class="allfile">全部文件如下:</p>
+	<!-- <input type="submit" name="Button" value="展示数据" onclick="ajax_click()"  /> -->
+        <script>
+            var username= {{ username|safe }};
+            var filename= {{ filename|safe }};
+            var create_time = {{ create_time|safe }};
+             var time_different = {{ time_different|safe }};
+
+
+
+
+            var str="";
+            //str +="<table id='showfirstline' width=80% border=0 rules=all><thead><tr><th>"+" "+"</th>"+"<th>"+"文件名 "+"</th>"+"<th>"+"上传者"+"</th>"+"<th>"+"上传时间"+"</th></tr></thead></table>";
+            str +="<table id='showall' width=80% border=0 rules=all>";
+            str +="<tbody>";
+
+            for(var i =0;i<username.length;i++)
+            {
+                if(i%15 ==0){
+                    str +="<tr><th>"+" "+"</th>"+"<th>"+"文件名 "+"</th>"+"<th>"+"上传者"+"</th>"+"<th>"+"上传时间"+"</th></tr>"+"<tr>";
+
+                }
+                else{
+                    str +="<tr>";
+                }
+
+
+                if(time_different[i]<=80){
+                    //str +="<tr>";
+                    //str += "<tr><td>"+"<a href='../download/filename="+(filename[i])+"'"+">"+(filename[i])+"</a>" + "</td>";
+                    str += "<td>"+"<img id="+"newicon"+" "+"src="+ "/static/img/new1.gif"+"/>"+ "</td>";
+                    str +="<td>"+"<a href='../download/filename="+(filename[i])+"'"+">"+(filename[i])+"</a>" + "</td>";
+                    str += "<td>" + (username[i]) + "</td>";
+                    str += "<td>" + (create_time[i]) + "</td>";
+                    str += "</tr>"
+
+                }
+                else {
+                    //str +="<tr>";
+                    str += "<td>" + "</td>";
+                    str += "<td>" + "<a href='../download/filename=" + (filename[i]) + "'" + ">" + (filename[i]) + "</a>" + "</td>";
+                    str += "<td>" + (username[i]) + "</td>";
+                    str += "<td>" + (create_time[i]) + "</td>";
+                    str += "</tr>";
+                }
+            }
+            str += "</tbody></table>";
+            str += "<table width=\"80%\" align=\"center\"><tr><td><div id=\"barcon\" name=\"bacon\"></div></td></tr></table>";
+            document.write(str);
+            goPage(1);
+
+     </script>
+
+</article>
+
 </body>
 </html>
+

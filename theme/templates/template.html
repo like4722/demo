@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>main page</title>
+    <script src="/static/js/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    <link rel="stylesheet" media="screen" href="/static/css/basic.css" />
+    <!-- jQuery -->
+    <script type="text/javascript" charset="utf8" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <div class="login_register">
+        <li><a href="../login">登陆or退出</a></li>
+        <li><a href="../register">注册</a></li>
+    </div>
+</head>
+<body>
+<header>
+    <img id="csairlogo" src="/static/img/csairlogo.png" align="right" alt="上海分公司市场销售部文件管理系统">
+    <img id="skyteamlogo" src="/static/img/logo_skyteam.png" align="right" alt="上海分公司市场销售部文件管理系统">
+
+    <nav>
+        <ul>
+            <li><a href="../template">首页</a></li>
+            <li><a href="../uploadfile">上传文件</a></li>
+            <li><a href="../show">文件搜索</a></li>
+            <li><a href="../newupdate">最新文件</a></li>
+            <li><a href="../contact">关于我们</a></li>
+        </ul>
+    </nav>
+</header>
+<div class="loading">页面加载中。。。</div>
+<script>
+    window.onload=function () {
+        $(".loading").fadeOut();
+
+    }
+
+</script>
+<article>
+
+    <h1>文件管理系统简介</h1>
+    <p id="intro">欢迎来到中国南方航空有限公司上海分公司市场销售部文件管理系统。在这里你可以<a href="../uploadfile">上传文件</a>；</br>
+        也可以访问服务器上的<a href="../show">全部文件</a>，对于3天内上传的新文件，会有"new"标识提示您下载阅读；</br>
+        为了方便查找您想要的文件，我们可以通过关键词模糊搜索功能查找到<a href="../showall">相应文件</a>；</br>
+        为了更好的完善该系统，您可以<a href="../contact">联系我们</a>。</br>
+
+    </p>
+    <p>
+       <img id="airplane" src="/static/img/IMG_2367.JPG" align="center" alt="上海分公司市场销售部文件管理系统">
+    </p>
+
+</article>
+
+</body>
+</html>

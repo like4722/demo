@@ -1,7 +1,51 @@
-<form enctype="multipart/form-data" action="" method="post">
-    {{ uf.as_p}}
+<!DOCTYPE html>
+<html>
+<head>
 
-    <input type="file" name="myfile">
-   <br/>
-   <input type="submit" value="upload"/>
+    {% include 'top.html' %}
+
+    <title>{% block title %}业务支持{% endblock %} - 主页</title>
+</head>
+<body>
+
+{% include 'middle.html' %}
+
+{% block content %}
+<form id="upload" class= "content" enctype="multipart/form-data" action="" onsubmit="return forward()" method="post">
+    <style>
+        .content{
+            height:437px;
+        }
+    </style>
+    <nav>
+        <li>上传者：</li>
+        {{ uf.as_ul}}
+        <li><input id="ulfile" type="file" name="myfile"></li>
+        <li><input type="submit" value="upload" /></li>
+
+    <script>
+
+        function forward(){
+
+            if(document.getElementById("ulfile").value){
+            alert("上传成功！");
+            return true;
+            }
+            else{
+            alert("文件未上传，请重新再试！");
+            return false;
+         }
+        }
+    </script>
+
+    </nav>
+
 </form>
+
+{% endblock %}
+{% include 'bottom.html' %}
+
+
+</body>
+</html>
+
